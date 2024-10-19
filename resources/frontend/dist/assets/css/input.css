@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+
+  @apply bg-black_1 text-gray pt-11
+}
+
+.task-container {
+  @apply p-4 flex justify-between items-center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: #16181D;
+
+}
+
+body.loading {
+  @apply pb-11
+}
+
+.footer-nav.active svg path {
+  fill: white;
+}
+
+.footer-nav div {
+  @apply p-2.5
+}
+
+.footer-nav.active div {
+  @apply bg-gray_2 rounded-lg
+}
+
+.footer-nav.active {
+  @apply text-white
+}
+
+.footer-nav {
+  @apply flex flex-col gap-1 items-center text-base
+}
+
+footer {
+  @apply px-5 pt-3 pb-10 flex items-center gap-8;
+  border-top: 1px solid #2C333A;
+  background: #1D1F25;
+}
+
+.progress-container {
+  @apply w-full bg-[#2C333A] h-1.5 rounded-full
+}
+
+.progress-bar {
+  @apply bg-blue h-1.5 rounded-full
+}
+
+.progress-container.big {
+  @apply w-full bg-transparent h-11 rounded-md;
+  border: 1px solid rgba(49, 52, 62, 0.50);
+}
+
+.progress-bar.big {
+  @apply bg-blue h-11 rounded-md flex justify-end pr-4 text-white items-center
+}
+
+.btn {
+  @apply rounded-lg text-white font-medium py-4 transition-all hover:opacity-75 leading-none
+}
+
+.btn.casino {
+  background-image: url(../img/btn_casino.png);
+  border: 1px solid rgba(49, 52, 62, 0.50);
+  background-position: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.news-container p {
+  @apply text-white
+}
+
+.news-container span {
+  @apply text-lg text-gray/60
+}
+
+.news-container image {
+  @apply h-36 w-full
+}
+
+.news-container {
+  @apply p-4 border border-white/10 rounded-[10px] flex flex-col gap-3.5;
+}
