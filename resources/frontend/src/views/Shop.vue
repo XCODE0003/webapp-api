@@ -50,10 +50,10 @@ function openModal(price) {
                     </div>
                     <div>
                         <button
-                            class="btn text-base py-1.5 bg-white text-black px-5 font-semibold"
+                            class="price-btn"
                             @click="openModal(item.price)"
                         >
-                            {{ $t("buttons.buy") }}
+                            {{ item.price }} TON
                         </button>
                     </div>
                 </div>
@@ -86,10 +86,10 @@ function openModal(price) {
                     </div>
                     <div>
                         <button
-                            class="btn text-base py-1.5 bg-white text-black px-5 font-semibold"
-                            @click="openModal(item.price)"
+                            class="price-btn"
+                            @click="openModal(settings.price_autoclaim)"
                         >
-                            {{ $t("buttons.buy") }}
+                            {{ settings.price_autoclaim }}
                         </button>
                     </div>
                 </div>

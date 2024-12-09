@@ -54,6 +54,7 @@ const messages = {
             description_1: 'You have ',
             description_2: 'free spins',
             spin: 'Spin!',
+            price_one_spin: 'Price one spin',
         },
         deposit: {
             description: 'Send exactly the amount specified below to the address below, the balance will be replenished after the transaction is confirmed',
@@ -114,6 +115,7 @@ const messages = {
             description_1: 'У вас ',
             description_2: ' бесплатных вращений',
             spin: 'Крутить!',
+            price_one_spin: 'Цена одного вращения',
         },
         deposit: {
             description: 'Отправьте строго ту сумму которая указана ниже на адрес ниже, баланс будет пополнен после подтверждения транзакции',

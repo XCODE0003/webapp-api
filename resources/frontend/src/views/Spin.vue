@@ -21,18 +21,17 @@ const canvasVerify = ref(false);
 const verifyDuration = 2;
 const canvasOptions = {
     btnWidth: 50,
-    borderColor: "#45464A",
-    borderWidth: 5,
+    borderWidth: 1,
     lineHeight: 24,
     textDirection: "vertical",
-    fontSize: 24,
+    fontSize: 28,
 };
 const prizesCanvas = [
     {
         id: 1,
         name: "2500",
         value: "2500",
-        bgColor: "#FF2050",
+        bgColor: "#1D1F24",
         color: "#ffffff",
         probability: 25,
     },
@@ -40,7 +39,7 @@ const prizesCanvas = [
         id: 2,
         name: "10000",
         value: "10000",
-        bgColor: "#760FC6",
+        bgColor: "#22252B",
         color: "#ffffff",
         probability: 15,
     },
@@ -48,15 +47,15 @@ const prizesCanvas = [
         id: 3,
         name: "40000",
         value: "40000",
-        bgColor: "#36E87A",
-        color: "#134F2A",
+        bgColor: "#1D1F24",
+        color: "#ffffff",
         probability: 8,
     },
     {
         id: 4,
         name: "160000",
         value: "160000",
-        bgColor: "#5982FF",
+        bgColor: "#22252B",
         color: "#ffffff",
         probability: 1.95,
     },
@@ -64,7 +63,7 @@ const prizesCanvas = [
         id: 5,
         name: "???",
         value: "jackpot",
-        bgColor: "#373737",
+        bgColor: "#1D1F24",
         color: "#ffffff",
         probability: 0.05,
     },
@@ -72,7 +71,7 @@ const prizesCanvas = [
         id: 6,
         name: "2500",
         value: "2500",
-        bgColor: "#FF2050",
+        bgColor: "#22252B",
         color: "#ffffff",
         probability: 25,
     },
@@ -80,7 +79,7 @@ const prizesCanvas = [
         id: 7,
         name: "10000",
         value: "10000",
-        bgColor: "#760FC6",
+        bgColor: "#1D1F24",
         color: "#ffffff",
         probability: 15,
     },
@@ -88,15 +87,15 @@ const prizesCanvas = [
         id: 8,
         name: "40000",
         value: "40000",
-        bgColor: "#36E87A",
-        color: "#134F2A",
+        bgColor: "#22252B",
+        color: "#ffffff",
         probability: 8,
     },
     {
         id: 9,
         name: "160000",
         value: "160000",
-        bgColor: "#5982FF",
+        bgColor: "#1D1F24",
         color: "#ffffff",
         probability: 1.95,
     },
@@ -104,7 +103,9 @@ const prizesCanvas = [
         id: 10,
         name: "???",
         value: "jackpot",
-        bgColor: "#373737",
+        borderColor: "#ffffff",
+        borderWidth: 5,
+        bgColor: "#22252B",
         color: "#ffffff",
         probability: 0.05,
     },
@@ -154,42 +155,25 @@ function onChangePrize(id) {
 
 <template>
     <div class="min-h-screen flex flex-col gap-9 mb-32">
-        <main
-            class="flex-col mx-auto container items-center w-full gap-9 justify-center flex"
-        >
-            <div
-                id="menu"
-                class="h-full p-3 user-select-none w-full bg-dark cursor-pointer flex items-center justify-between rounded-lg gap-3.5"
-            >
+        <main class="flex-col mx-auto container items-center w-full gap-9 justify-center flex">
+            <div id="menu"
+                class="h-full p-3 user-select-none w-full bg-dark cursor-pointer flex items-center justify-between rounded-lg gap-3.5">
                 <div class="flexflex-col gap-1">
                     <p class="text-sm">{{ $t("other.monet") }}:</p>
                     <h2 class="text-xl text-white">
                         {{ balance_donat }}
                     </h2>
                 </div>
-                <RouterLink
-                    to="/shop"
-                    class="btn bg-blue open-DepositModal text-lg px-3 py-1"
-                >
+                <RouterLink to="/shop" class="btn bg-blue open-DepositModal text-lg px-3 py-1">
                     {{ $t("buttons.deposit") }}
                 </RouterLink>
             </div>
-            <FortuneWheel
-                style="width: 390px; max-width: 100%"
-                ref="wheelEl"
-                :verify="canvasVerify"
-                :canvas="canvasOptions"
-                :prizes="prizesCanvas"
-                :disabled="freeSpins <= 0 && user?.balance_donat < 300"
-                @rotateStart="onCanvasRotateStart"
-                @rotateEnd="onRotateEnd"
-            />
+            <FortuneWheel style="width: 390px; max-width: 100%" ref="wheelEl" :verify="canvasVerify"
+                :canvas="canvasOptions" :prizes="prizesCanvas" :disabled="freeSpins <= 0 && user?.balance_donat < 300"
+                @rotateStart="onCanvasRotateStart" @rotateEnd="onRotateEnd" />
             <div class="flex w-full flex-col gap-4">
-                <button
-                    @click="wheelEl.startRotate()"
-                    :disabled="freeSpins <= 0 && user?.balance_donat < 300"
-                    class="btn bg-blue"
-                >
+                <button @click="wheelEl.startRotate()" :disabled="freeSpins <= 0 && user?.balance_donat < 300"
+                    class="btn bg-blue">
                     {{ $t("spin.spin") }}
                 </button>
                 <p class="mx-auto">
@@ -198,7 +182,8 @@ function onChangePrize(id) {
                     {{ $t("spin.description_2") }}
                 </p>
                 <p class="mx-auto text-lg text-white">
-                    Цена одного вращения: <span class="text-blue">300</span>
+                    {{ $t("spin.price_one_spin") }}:
+                    <span class="text-blue">300</span>
                 </p>
             </div>
         </main>

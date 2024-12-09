@@ -83,19 +83,10 @@ onMounted(async () => {
 
 <template>
     <div class="mb-48 min-h-screen flex flex-col gap-9">
-        <main
-            class="flex-col m-auto container items-center w-full gap-9 justify-center flex"
-        >
+        <main class="flex-col m-auto container items-center w-full gap-9 justify-center flex">
             <section class="flex items-center flex-col gap-2.5">
-                <div
-                    class="flex text-5xl text-white font-bold items-center gap-2.5"
-                >
-                    <img
-                        class="h-11"
-                        src="/assets/img/coin.png"
-                        alt=""
-                        srcset=""
-                    />
+                <div class="flex text-5xl text-white font-bold items-center gap-2.5">
+                    <img class="h-11" src="/assets/img/coin.png" alt="" srcset="" />
                     <LoadingComponent :value="userCoinsShow" />
                 </div>
                 <p class="text-gray font-normal">
@@ -104,53 +95,29 @@ onMounted(async () => {
             </section>
             <section class="w-full">
                 <div class="progress-container big w-full">
-                    <div
-                        v-if="charging !== 0"
-                        :style="{ width: charging + '%' }"
-                        class="progress-bar big"
-                    >
+                    <div v-if="charging !== 0" :style="{ width: charging + '%' }" class="progress-bar big">
                         {{ charging > 20 ? chargingShow + "%" : "" }}
                     </div>
-                    <div
-                        v-else
-                        class="w-full flex justify-center h-full items-center"
-                    >
+                    <div v-else class="w-full flex justify-center h-full items-center">
                         Start earning!
                     </div>
                 </div>
             </section>
-            <section
-                @click="tap()"
-                @touchstart.prevent="handleTouchStart"
-                @touchmove.prevent="handleTouchMove"
-                class="border border-white/10 rounded-3xl p-6"
-            >
-                <img
-                    class="active:scale-95 transition-all"
-                    src="/assets/img/click.png"
-                    alt=""
-                    srcset=""
-                />
+            <section @click="tap()" class="border touch-pan-y border-white/10 rounded-3xl p-6"
+                style="touch-action: pan-y;">
+                <img class="active:scale-95 transition-all" src="/assets/img/click.png" alt="" srcset="" />
             </section>
             <section class="flex w-full text-center flex-col gap-6">
                 <RouterLink to="/roulette" class="btn casino w-full">
                     {{ $t("home.casino") }}
                 </RouterLink>
-                <button
-                    @click="claimBonus()"
-                    :disabled="charging < 100 || charging != 100"
-                    class="btn bg-blue"
-                >
+                <button @click="claimBonus()" :disabled="charging < 100 || charging != 100" class="btn bg-blue">
                     {{ $t("home.claim_bonus") }}
                 </button>
             </section>
 
             <section class="flex flex-col gap-6 w-full items-center">
-                <div
-                    @click="openNews(News)"
-                    v-for="News in news"
-                    class="news-container cursor-pointer"
-                >
+                <div @click="openNews(News)" v-for="News in news" class="news-container cursor-pointer">
                     <img class="rounded-xl" :src="img_path + News.image" />
                     <div class="flex flex-col gap-1">
                         <p>{{ News.title }}</p>
@@ -168,9 +135,7 @@ onMounted(async () => {
                             {{ activeNew?.content }}
                         </p>
                     </div>
-                    <button
-                        class="btn bg-gray_2 close-modal text-sm text-white"
-                    >
+                    <button class="btn bg-gray_2 close-modal text-sm text-white">
                         Закрыть
                     </button>
                 </div>

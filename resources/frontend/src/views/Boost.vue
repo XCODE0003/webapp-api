@@ -111,10 +111,10 @@ async function buyBoost(boost) {
                                     v-if="boost.multiplier"
                                     class="leading-none text-white"
                                 >
-                                    +{{ boost.multiplier }}x
+                                    {{ boost.multiplier }}
                                 </p>
                                 <p
-                                    v-else-if="boost.profitPerHour"
+                                    v-if="boost.profitPerHour"
                                     class="leading-none text-white text-base"
                                 >
                                     {{ $t("boost.profit_per_hour") }}
@@ -128,18 +128,21 @@ async function buyBoost(boost) {
                                     {{ $t("boost.hours") }}
                                 </p>
 
-                                <span class="opacity-60 text-lg leading-none">{{
-                                    boost.cost
-                                }}</span>
+                                <span
+                                    v-if="boost.multiplier"
+                                    class="opacity-60 text-lg leading-none"
+                                >
+                                    Gives {{ boost.multiplier }}x energy
+                                </span>
                             </div>
                         </div>
                         <div>
                             <button
                                 v-if="boost.user_lvl"
                                 @click="buyBoost(selectedTab)"
-                                class="btn p-2.5 bg-white text-sm text-black px-3 font-semibold"
+                                class=" price-btn"
                             >
-                                {{ $t("buttons.upgrade") }}
+                                {{ boost.cost }}
                             </button>
                         </div>
                     </div>
